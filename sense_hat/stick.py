@@ -178,7 +178,10 @@ class SenseStick(object):
                     callback(event)
                 callback = self._callbacks.get('*')
                 if callback:
-                    callback(event)
+                    try:
+                       callback(event)
+                    except:
+                       print('stick call back error')
 
     def wait_for_event(self, emptybuffer=False):
         """
